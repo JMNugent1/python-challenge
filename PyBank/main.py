@@ -6,28 +6,16 @@ bank_csv = os.path.join('Resources', 'budget_data.csv')
 months = []
 profit_loss = []
 profit_loss_change = []
-# max_change = 0
-# max_month = ""
-# min_change = 0
-# min_month = ""
 
 with open(bank_csv) as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=',')
+    csv_reader = csv.reader(csv_file, delimiter = ',')
 
     csv_header = next(csv_reader)
 
     for row in csv_reader:
         months.append(row[0])
         profit_loss.append(int(row[1]))
-
-        # if int(row[1]) > max_change:
-        #     max_change = int(row[1])
-        #     max_month = row[0]
-        # if int(row[1]) < min_change:
-        #     min_change = int(row[1])
-        #     min_month = row[0]
-       
-        
+    
     for i in range(len(profit_loss)-1):
         profit_loss_change.append(profit_loss[i + 1] - profit_loss[i])
 
@@ -54,17 +42,17 @@ print(f'Greatest Decrease in Profits: ${min_change}')
 
 output_path = os.path.join("Analysis", "analysis.txt")
 
-# with open(output_path,"w") as analysis:
-#     analysis.write('Financial Analysis \n')
-#     analysis.write('\n')
-#     analysis.write('------------------------- \n')
-#     analysis.write('\n')
-#     analysis.write(f'Total Months: {total_months} \n')
-#     analysis.write('\n')
-#     analysis.write(f'Total: ${profit}\n')
-#     analysis.write('\n')
-#     analysis.write(f'Average Change: ${average_change}\n')
-#     analysis.write('\n')
-#     analysis.write(f'Greatest Increase in Profits: ${max_change}\n')
-#     analysis.write('\n')
-#     analysis.write(f'Greatest Decrease in Profits: ${min_change}\n')
+with open(output_path,"w") as analysis:
+    analysis.write('Financial Analysis \n')
+    analysis.write('\n')
+    analysis.write('------------------------- \n')
+    analysis.write('\n')
+    analysis.write(f'Total Months: {total_months} \n')
+    analysis.write('\n')
+    analysis.write(f'Total: ${profit}\n')
+    analysis.write('\n')
+    analysis.write(f'Average Change: ${average_change}\n')
+    analysis.write('\n')
+    analysis.write(f'Greatest Increase in Profits: ${max_change}\n')
+    analysis.write('\n')
+    analysis.write(f'Greatest Decrease in Profits: ${min_change}')
